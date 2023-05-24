@@ -1,0 +1,133 @@
+[
+    {
+        "id": 1,
+        "nombre": "Vestido Universo",
+        "imagen": "./img/bottom/img1.jpg",
+        "categoria": {
+            "nombre": "bottom",
+            "id": "bottom"
+        },
+        "precio": 9900
+    },
+
+    {
+        "id": 2,
+        "nombre": "Pantalón Saturno",
+        "imagen": "./img/bottom/img2.jpg",
+        "categoria": {
+            "nombre": "bottom",
+            "id": "bottom"
+        },
+        "precio": 12500
+    },
+
+    {
+        "id": 3,
+        "nombre": "Vestido Sol",
+        "imagen": "./img/bottom/img3.jpg",
+        "categoria": {
+            "nombre": "bottom",
+            "id": "bottom"
+        },
+        "precio": 9500
+    },
+
+    {
+        "id": 4,
+        "nombre": "Pantalón Estrella",
+        "imagen": "./img/bottom/img4.jpg",
+        "categoria": {
+            "nombre": "bottom",
+            "id": "bottom"
+        },
+        "precio": 11700
+    },
+
+    {
+        "id": 5,
+        "nombre": "Entero Andromeda",
+        "imagen": "./img/bottom/img5.jpg",
+        "categoria": {
+            "nombre": "bottom",
+            "id": "bottom"
+        },
+        "precio": 10300
+    },
+
+    {
+        "id": 6,
+        "nombre": "Falda Asteroide",
+        "imagen": "./img/bottom/img6.jpg",
+        "categoria": {
+            "nombre": "bottom",
+            "id": "bottom"
+        },
+        "precio": 8500
+    },
+
+    {
+        "id": 7,
+        "nombre": "Buzo Galaxia",
+        "imagen": "./img/top/img7.jpg",
+        "categoria": {
+            "nombre": "top",
+            "id": "top"
+        },
+        "precio": 15600
+    },
+
+    {
+        "id": 8,
+        "nombre": "Corset Venus",
+        "imagen": "./img/top/img8.jpg",
+        "categoria": {
+            "nombre": "top",
+            "id": "top"
+        },
+        "precio": 10200
+    },
+
+    {
+        "id": 9,
+        "nombre": "Campera Meteorito",
+        "imagen": "./img/top/img9.jpg",
+        "categoria": {
+            "nombre": "top",
+            "id": "top"
+        },
+        "precio": 13400
+    },
+
+    {
+        "id": 10,
+        "nombre": "Saco Supernova",
+        "imagen": "./img/top/img10.jpg",
+        "categoria": {
+            "nombre": "top",
+            "id": "top"
+        },
+        "precio": 16200
+    },
+
+    {
+        "id": 11,
+        "nombre": "Top Luna",
+        "imagen": "./img/top/img11.jpg",
+        "categoria": {
+            "nombre": "top",
+            "id": "top"
+        },
+        "precio": 7900
+    },
+
+    {
+        "id": 12,
+        "nombre": "Body Nebulosa",
+        "imagen": "./img/top/img12.jpg",
+        "categoria": {
+            "nombre": "top",
+            "id": "top"
+        },
+        "precio": 9600
+    }
+]

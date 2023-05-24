@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="./estilos/estilos.css">
+    <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon">
+    <title>CARRITO | PROYECTO FINAL | CASATTI</title>
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <header>
+                <a href="index.html"><h1 class="logo">mi tienda</h1></a>
+            </header>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <a href="index.html" class="botonMenu botonVolver"><i class="bi bi-arrow-left"></i>Seguir comprando</a>
+                    </li>
+                    <li>
+                        <a href="carrito.html" class="botonMenu botonCarrito active"><i class="bi bi-cart2"></i>Carrito</a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <a href="https://www.facebook.com/ValeCasatti/?_rdc=1&_rdr">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/valocasatti/">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="mailto: valeria.casatti@gmail.com">
+                    <i class="bi bi-envelope-fill"></i>
+                </a>
+                <a href="https://wa.me/5493516177344">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+            </footer>
+        </aside>
+        <main>
+            <h2 class="tituloPrincipal">Carrito</h2>
+            <div class="contenedorCarrito">
+                <p id="carritoVacio" class="carritoVacio">Tu carrito está vacío! 🥺</p>
+                <div id="carritoProductos" class="carritoProductos disabled">
+                    <!--SE COMPLETA CON JS-->
+                </div>
+                <div id="carritoAcciones" class="carritoAcciones disabled">
+                    <div class="carritoAccionesLeft">
+                        <button class="accionesVaciarCarrito">Vaciar carrito</button>
+                    </div>
+                    <div class="carritoAccionesRight">
+                        <div class="accionesTotal">
+                            <p>Total:</p>
+                            <p class="total"></p>
+                        </div>
+                        <button id="accionesComprar" class="accionesComprar">Ir a pagar</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!--LIBRERIA TOASTIFY-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!--LIBRERIA SWEET ALERT-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--ARCHIVO JS-->
+    <script src="./js/carrito.js"></script>
+</body>
+</html>
