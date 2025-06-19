@@ -11,22 +11,23 @@ const botonComprar = document.querySelector("#accionesComprar");
 let productosEnCarrito = localStorage.getItem("productosEnCarrito");
 productosEnCarrito = JSON.parse(productosEnCarrito);
 
-function cargarProductosCarrito(){
-    if(productosEnCarrito && productosEnCarrito.length > 0){
-
+function cargarProductosCarrito() {
+  if (productosEnCarrito && productosEnCarrito.length > 0) {
     //AÑADIR O QUITAR CLASE DISABLED
-        contenedorCarritoVacio.classList.add("disabled");
-        contenedorCarritoProductos.classList.remove("disabled");
-        contenedorCarritoAcciones.classList.remove("disabled");
+    contenedorCarritoVacio.classList.add("disabled");
+    contenedorCarritoProductos.classList.remove("disabled");
+    contenedorCarritoAcciones.classList.remove("disabled");
 
-        contenedorCarritoProductos.innerHTML = "";
+    contenedorCarritoProductos.innerHTML = "";
 
     //AGREGAR PRODUCTOS AL CARRITO
-        productosEnCarrito.forEach(producto => {
-            const div = document.createElement("div");
-            div.classList.add("carritoProducto");
-            div.innerHTML = `
-            <img class="carritoProductoImagen" src="${producto.imagen}" alt="${producto.nombre}">
+    productosEnCarrito.forEach((producto) => {
+      const div = document.createElement("div");
+      div.classList.add("carritoProducto");
+      div.innerHTML = `
+            <img class="carritoProductoImagen" src="${producto.imagen}" alt="${
+        producto.nombre
+      }">
             <div class="carritoProductoTitulo">
                 <small>Artículo:</small>
                 <h3>${producto.nombre}</h3>
@@ -43,104 +44,130 @@ function cargarProductosCarrito(){
                 <small>Subtotal</small>
                 <p>$${producto.precio * producto.cantidad}</p>
             </div>
-            <button class="carritoProductoEliminar" id="${producto.id}"><i class="bi bi-trash"></i></button>
+            <button class="carritoProductoEliminar" id="${
+              producto.id
+            }"><i class="bi bi-trash"></i></button>
             </div>
             `;
-            contenedorCarritoProductos.append(div);
-        })
+      contenedorCarritoProductos.append(div);
+    });
 
     //AÑADIR O QUITAR CLASE DISABLED
-    }else{
-        contenedorCarritoVacio.classList.remove("disabled");
-        contenedorCarritoProductos.classList.add("disabled");
-        contenedorCarritoAcciones.classList.add("disabled");
-    };
-    actualizarBotonEliminar();
-    actualizarTotal();
+  } else {
+    contenedorCarritoVacio.classList.remove("disabled");
+    contenedorCarritoProductos.classList.add("disabled");
+    contenedorCarritoAcciones.classList.add("disabled");
+  }
+  actualizarBotonEliminar();
+  actualizarTotal();
 }
 cargarProductosCarrito();
 
 //ELIMINAR DEL CARRITO
-function eliminarDelCarrito(e){
+function eliminarDelCarrito(e) {
+  const idBoton = e.currentTarget.id;
+  const productoAEliminar = productosEnCarrito.find(
+    (producto) => producto.id == idBoton
+  );
 
-    //TOAST
-    Toastify({
-        text: "Producto eliminado del carrito",
-        duration: 2000,
-        newWindow: true,
-        gravity: "top",
-        position: "right", 
-        stopOnFocus: true, 
-        style: {
-            background: "#ff003f",
-        },
-        offset: {
-            x: "3rem",
-            y: "2.5rem"
-        },
-        onClick: function(){}
-    }).showToast();
+  //TOAST
+  Toastify({
+    text: `${productoAEliminar.nombre} eliminado del carrito`,
+    duration: 2000,
+    newWindow: true,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: "#ff003f",
+    },
+    offset: {
+      x: "3rem",
+      y: "2.5rem",
+    },
+    onClick: function () {},
+  }).showToast();
 
-    const idBoton = e.currentTarget.id;
+  const index = productosEnCarrito.findIndex(
+    (producto) => producto.id == idBoton
+  );
+  productosEnCarrito.splice(index, 1);
+  cargarProductosCarrito();
 
-    const index = productosEnCarrito.findIndex(producto => producto.id == idBoton);
-    productosEnCarrito.splice(index, 1);
-    cargarProductosCarrito();
+  localStorage.setItem(
+    "productosEnCarrito",
+    JSON.stringify(productosEnCarrito)
+  );
+}
 
-    localStorage.setItem("productosEnCarrito", JSON.stringify(productosEnCarrito));
-};
+function actualizarBotonEliminar() {
+  botonesEliminar = document.querySelectorAll(".carritoProductoEliminar");
 
-function actualizarBotonEliminar(){
-    botonesEliminar = document.querySelectorAll(".carritoProductoEliminar");
-
-    botonesEliminar.forEach(boton =>{
-        boton.addEventListener("click", eliminarDelCarrito);
-    });
-
-};
+  botonesEliminar.forEach((boton) => {
+    boton.addEventListener("click", eliminarDelCarrito);
+  });
+}
 
 //VACIAR CARRITO
 botonVaciar.addEventListener("click", vaciarCarrito);
-function vaciarCarrito(){
+function vaciarCarrito() {
+  const swalTextSingleProduct = `Se va a borrar ${productosEnCarrito[0].nombre} del carrito...`;
+  const swatTextManyProducts = `Se van a borrar ${productosEnCarrito.reduce(
+    (acc, producto) => acc + producto.cantidad,
+    0
+  )} productos del carrito...`;
+  const swalText =
+    productosEnCarrito.length > 1
+      ? swatTextManyProducts
+      : swalTextSingleProduct;
 
-    //ALERT
-    Swal.fire({
-        title: "Estas segurx?",
-        text: `Se van a borrar ${productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0)} productos del carrito...`,
-        icon: "warning",
-        iconColor: "#ff003f",
-        showDenyButton: true,
-        denyButtonColor: "#ff003f",
-        denyButtonText: "Cancelar!",
-        confirmButtonColor: "#0BDA51",
-        confirmButtonText: "Si estoy segurx!"
-    }).then((result) =>{
-        if(result.isConfirmed){
-            productosEnCarrito.length = 0;
-            localStorage.setItem("productosEnCarrito", JSON.stringify(productosEnCarrito));
-            cargarProductosCarrito();
-        }
-    })
-};
+  //ALERT
+  Swal.fire({
+    title: "Estas segurx?",
+    text: swalText,
+    icon: "warning",
+    iconColor: "#ff003f",
+    showDenyButton: true,
+    denyButtonColor: "#ff003f",
+    denyButtonText: "Cancelar!",
+    confirmButtonColor: "#0BDA51",
+    confirmButtonText: "Si estoy segurx!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      productosEnCarrito.length = 0;
+      localStorage.setItem(
+        "productosEnCarrito",
+        JSON.stringify(productosEnCarrito)
+      );
+      cargarProductosCarrito();
+    }
+  });
+}
 
 //CALCULAR TOTAL
-function actualizarTotal(){
-    const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
-    contenedorTotal.innerText =  `$${totalCalculado}`;
-};
+function actualizarTotal() {
+  const totalCalculado = productosEnCarrito.reduce(
+    (acc, producto) => acc + producto.precio * producto.cantidad,
+    0
+  );
+  contenedorTotal.innerText = `$${totalCalculado}`;
+}
 
 //IR A PAGAR
-botonComprar.addEventListener("click", () =>{
-    Swal.fire({
-        text: "muchas gracias por tu compra!🖤",
-        confirmButtonText: "volver a la tienda",
-        confirmButtonColor: "#000000"
-    }).then((result) =>{
-        if(result.isConfirmed){
-            productosEnCarrito.length = 0;
-            localStorage.setItem("productosEnCarrito", JSON.stringify(productosEnCarrito));
-            cargarProductosCarrito();
-            window.location.href = "index.html";
-        }
-    })
+botonComprar.addEventListener("click", () => {
+  Swal.fire({
+    text: "muchas gracias por tu compra!🖤",
+    confirmButtonText: "volver a la tienda",
+    confirmButtonColor: "#000000",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      productosEnCarrito.length = 0;
+      localStorage.setItem(
+        "productosEnCarrito",
+        JSON.stringify(productosEnCarrito)
+      );
+      cargarProductosCarrito();
+      window.location.href = "index.html";
+    }
+  });
 });

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,48 +11,56 @@
     <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon">
     <title>PROYECTO FINAL | CASATTI</title>
 </head>
+
 <body>
     <div class="container">
         <header class="headerMobile">
-            <a href="index.html"><h1 class="logo">mi tienda</h1></a>
+            <a href="index.html">
+                <h1 class="logo">mi tienda</h1>
+            </a>
             <button class="openMenu" id="openMenu"><i class="bi bi-list"></i></button>
         </header>
         <aside>
-            <div class="contenedorAsideVisible">
-                <header>
-                    <a href="index.html"><h1 class="logo">mi tienda</h1></a>
-                </header>
+            <header class="headerAsideVisible">
+                <a href="index.html">
+                    <h1 class="logo">mi tienda</h1>
+                </a>
                 <button class="closeMenu" id="closeMenu"><i class="bi bi-x"></i></button>
-            </div>
+            </header>
             <nav>
                 <ul class="menu">
                     <li>
-                        <button id="todos" class="botonMenu botonCategoria active"><i class="bi bi-arrow-right"></i>Productos</button>
+                        <button id="todos" class="botonMenu botonCategoria active"><i
+                                class="bi bi-arrow-right"></i>Productos</button>
                     </li>
                     <li>
                         <button id="top" class="botonMenu botonCategoria"><i class="bi bi-arrow-right"></i>Top</button>
                     </li>
                     <li>
-                        <button id="bottom" class="botonMenu botonCategoria"><i class="bi bi-arrow-right"></i>Bottom</button>
+                        <button id="bottom" class="botonMenu botonCategoria"><i
+                                class="bi bi-arrow-right"></i>Bottom</button>
                     </li>
                     <li>
-                        <a href="carrito.html" class="botonMenu botonCarrito"><i class="bi bi-cart2"></i>Carrito<span id="numerito" class="numerito">0</span></a>
+                        <a href="carrito.html" class="botonMenu botonCarrito"><i class="bi bi-cart2"></i>Carrito<span
+                                id="numerito" class="numerito">0</span></a>
                     </li>
                 </ul>
             </nav>
             <footer>
-                <a href="https://www.facebook.com/ValeCasatti/?_rdc=1&_rdr">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="https://www.instagram.com/valocasatti/">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="mailto: valeria.casatti@gmail.com">
-                    <i class="bi bi-envelope-fill"></i>
-                </a>
-                <a href="https://wa.me/5493516177344">
-                    <i class="bi bi-whatsapp"></i>
-                </a>
+                <div class="footerIcons">
+                    <a href="#">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="mailto: valeria.casatti@gmail.com">
+                        <i class="bi bi-envelope-fill"></i>
+                    </a>
+                    <a href="https://wa.me/5493516177344">
+                        <i class="bi bi-whatsapp"></i></a>
+                </div>
+                <p>© Valeria Casatti</p>
             </footer>
         </aside>
         <main>
@@ -69,4 +78,5 @@
     <script src="./js/index.js"></script>
     <script src="./js/menu.js"></script>
 </body>
-</html> 
+
+</html>
